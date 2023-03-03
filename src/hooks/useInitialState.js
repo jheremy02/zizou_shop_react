@@ -24,8 +24,9 @@ const useInitialState=()=>{
                 
                 
             })
-
+            console.log(cart)  
             return cart
+            
         }
 
         function updateCart() {
@@ -34,12 +35,12 @@ const useInitialState=()=>{
             if (found) {
                 return updateQuantity();
             }else {
-                return [...state.cart,payload]
+                return [...state.cart,{...payload,quantity:1}]
             }
         }
 
 
-        const cartUpdated = (state.cart.length>0)?updateCart():[payload]
+        const cartUpdated = (state.cart.length>0)?updateCart():[{...payload,quantity:1}]
         
         
         setState({
@@ -49,12 +50,39 @@ const useInitialState=()=>{
     }
 
     const removeFromCart=payload=>{
-        setState(
-            {
-                ...state,
-                cart:state.cart.filter(item=>item.id!==payload.id)
-            }
-        )
+        
+        if (payload.quantity>1) {
+            const cartUpdated=state.cart.map((product)=>{
+
+                if (product.id==payload.id) {
+                    const newQuantity=payload.quantity-1
+                    const productUpdated={...product,quantity:newQuantity}
+                    return productUpdated
+                } else {
+                    return product
+                }
+
+            })
+
+            setState(
+                {
+                    ...state,
+                    cart:[...cartUpdated]
+                }
+            )
+
+
+        } else {
+            setState(
+                {
+                    ...state,
+                    cart:state.cart.filter(item=>item.id!==payload.id)
+                }
+            )
+        }
+       
+
+        
     }
 
     return {

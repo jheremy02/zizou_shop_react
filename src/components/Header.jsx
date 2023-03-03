@@ -7,8 +7,22 @@ function Header() {
 
   const {state}=useContext(AppContext)
 
-  const {cart}=state;
-  console.log(cart)
+  const {cart}=state;  
+
+  function sumItems() {
+    let numItems=0
+    cart.forEach(element => {
+      
+        if (element.quantity) {
+          numItems+=element.quantity
+        } else {
+          numItems+=1
+        }      
+    });
+
+    return numItems
+  }
+
   return (
     
 <nav className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -19,7 +33,7 @@ function Header() {
   </a>
   <div className="flex md:order-2">
       <Link to="/checkout">
-<button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><AiOutlineShoppingCart className="text-lg mr-1"></AiOutlineShoppingCart>Checkout{cart.length>0 && <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">{cart.length}</span>}
+<button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><AiOutlineShoppingCart className="text-lg mr-1"></AiOutlineShoppingCart>Checkout{cart.length>0 && <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">{sumItems()}</span>}
 </button>
 </Link>
       <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
