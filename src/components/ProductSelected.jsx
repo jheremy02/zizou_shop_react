@@ -3,7 +3,7 @@ import { BsTrash } from "react-icons/bs";
 import React, { useContext, useState } from 'react'
 
 function ProductSelected({product,handleremove}) {
-const [total,setState]=useState(product.quantity*product.price)
+const [total,setState]=useState()
   return (
     <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
                         <div class="w-full flex items-center">
@@ -11,11 +11,11 @@ const [total,setState]=useState(product.quantity*product.price)
                                 <img src={product.image} alt="" />
                             </div>
                             <div class="flex-grow pl-3">
-                                <h6 class="font-semibold uppercase text-gray-600">Ray Ban Sunglasses.</h6>
+                                <h6 class="font-semibold uppercase text-gray-600">{product.title}</h6>
                                 <p class="text-gray-400">x {product.quantity}</p>
                             </div>
                             <div>
-                            <span class="font-semibold text-gray-600 text-xl">${total}</span>
+                            <span class="font-semibold text-gray-600 text-xl">${product.quantity*product.price}</span>
                                 
                             </div>
                             <div className='p-4'>
