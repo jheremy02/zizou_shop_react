@@ -15,7 +15,7 @@ function Checkout(props) {
     }
 
     function handleSumTotal() {
-        const reducer=(accumulator,currentValue)=>accumulator + currentValue.price
+        const reducer=(accumulator,currentValue)=>accumulator + currentValue.price*currentValue.quantity
         const sum=cart.reduce(reducer,0)
         return sum
     }
@@ -36,14 +36,14 @@ function Checkout(props) {
                     
                 </div>
                 <div class="px-3 md:w-5/12">
-                    <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
+                    {cart.length > 0 && (<div><div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
                         
                         <div class="w-full flex items-center">
                             <div class="w-32">
                                 <span class="text-gray-600 font-semibold">Total Precio</span>
                             </div>
                             <div class="flex-grow pl-3">
-                                <span>$ 10</span>
+                                <span>$ {handleSumTotal()}</span>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ function Checkout(props) {
                         <Link to="/checkout/information">
                         <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i> Continuar pedido</button>
                         </Link>
-                    </div>
+                    </div></div>)}
                 </div>
             </div>
   </div>
