@@ -24,7 +24,7 @@ function Checkout(props) {
     <section class="bg-white dark:bg-gray-900">
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
       
-      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical</p>
+      <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl"></p>
       <div class="-mx-3 md:flex items-start">
                 <div class="px-3 md:w-7/12 lg:pr-10">
                 <div class="mb-5 text-gray-400">
