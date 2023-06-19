@@ -1,6 +1,7 @@
 name: Build and Deploy
 on: [push]
-
+env:
+  CI: false
 jobs:
   build:
     name: Build
@@ -9,7 +10,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: npm install --force && CI=''
+        run: npm install --force
       - name: Build
         run: npm run build
       - name: Archive Production Artifact
