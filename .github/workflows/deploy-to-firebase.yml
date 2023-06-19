@@ -36,3 +36,4 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           REACT_APP_CLIENT_ID_PAYPAL: ${{ secrets.REACT_APP_CLIENT_ID_PAYPAL }}
+          CI: false
