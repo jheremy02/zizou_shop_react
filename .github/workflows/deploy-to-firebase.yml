@@ -9,7 +9,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
-        run: npm install --force
+        run: npm install --force && CI=''
       - name: Build
         run: npm run build
       - name: Archive Production Artifact
@@ -36,4 +36,3 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           REACT_APP_CLIENT_ID_PAYPAL: ${{ secrets.REACT_APP_CLIENT_ID_PAYPAL }}
-          CI: ""
