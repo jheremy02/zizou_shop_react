@@ -13,7 +13,6 @@ jobs:
       - name: Build
         env:
           CI: false
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           REACT_APP_CLIENT_ID_PAYPAL: ${{ secrets.REACT_APP_CLIENT_ID_PAYPAL }}
         run: npm run build
 
@@ -38,5 +37,6 @@ jobs:
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
-        
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           
